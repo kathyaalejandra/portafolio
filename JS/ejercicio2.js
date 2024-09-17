@@ -1,0 +1,1 @@
+let nota1 = prompt('Ingresa la primera nota:', '');
