@@ -1,8 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Button, Alert, TouchableHighlight, Pressable } from 'react-native';
+import { StyleSheet, Text, Image, Pressable } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './HomeScreen';
 
-export default function App() {
+const Stack = createNativeStackNavigator();
+
+function MainScreen() {
+  const navigation = useNavigation();
+
   return (
     <LinearGradient
       colors={['white', '#22c1c3']}
@@ -16,36 +23,31 @@ export default function App() {
       <Text style={styles.text}>Municipalidad de Quinchao</Text>
       <Text style={styles.subtitulo}>Departamento de Medio Ambiente</Text>
 
-      <View style={styles.buttonContainer}>
-        <Button 
-          title="Presiona aquí" 
-          color="#6200EE" 
-          onPress={() => Alert.alert("Alerta", "Has presionado el botón normal")}
-        />
-      </View>
-
-      <TouchableHighlight 
-        style={styles.customButton} 
-        underlayColor="#4CAF50"
-        onPress={() => Alert.alert("Alerta", "Has presionado el botón personalizado")}
-      >
-        <Text style={styles.buttonText}>Presiona Aquí</Text>
-      </TouchableHighlight>
-
       <Pressable 
         style={({ pressed }) => [
           styles.iconButton, 
           { backgroundColor: pressed ? '#1A73E8' : '#4285F4' }
         ]} 
-        onPress={() => Alert.alert("¡Aviso!", "Has presionado el botón con imagen de Google")}
+        onPress={() => navigation.navigate('Home')}
       >
         <Image 
           source={require('./assets/google.png')}
           style={styles.icon}
         />
-        <Text style={styles.buttonText}>Iniciar sesión con Google</Text>
+        <Text style={styles.buttonText}>Iniciar sesión</Text>
       </Pressable>
     </LinearGradient>
+  );
+}
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Main" component={MainScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
@@ -71,16 +73,6 @@ const styles = StyleSheet.create({
   subtitulo: {
     fontSize: 15,
     color: 'black',
-  },
-  buttonContainer: {
-    marginVertical: 10,
-    width: '80%',
-  },
-  customButton: {
-    backgroundColor: '#8BC34A',
-    padding: 12,
-    borderRadius: 8,
-    marginVertical: 10,
   },
   iconButton: {
     flexDirection: 'row',
