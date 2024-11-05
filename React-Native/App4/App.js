@@ -22,7 +22,23 @@ function MainScreen() {
 
       <Text style={styles.text}>Municipalidad de Quinchao</Text>
       <Text style={styles.subtitulo}>Departamento de Medio Ambiente</Text>
+    {/* 
+      <View style={styles.buttonContainer}>
+        <Button 
+          title="Presiona aquí" 
+          color="#6200EE" 
+          onPress={() => Alert.alert("Alerta", "Has presionado el botón normal")}
+        />
+      </View>
 
+      <TouchableHighlight 
+        style={styles.customButton} 
+        underlayColor="#4CAF50"
+        onPress={() => Alert.alert("Alerta", "Has presionado el botón personalizado")}
+      >
+        <Text style={styles.buttonText}>Presiona Aquí</Text>
+      </TouchableHighlight>
+      */}
       <Pressable 
         style={({ pressed }) => [
           styles.iconButton, 
