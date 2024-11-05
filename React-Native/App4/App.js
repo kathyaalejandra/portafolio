@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   subtitulo: {
-    fontSize: 15,
+    fontSize: 16,
     color: 'black',
   },
   iconButton: {
