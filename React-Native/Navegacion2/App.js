@@ -1,9 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, Image, Pressable } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import { StyleSheet, Text, View, Pressable } from 'react-native';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { FontAwesome } from '@expo/vector-icons';
 import HomeScreen from './HomeScreen';
+import ConfiguracionScreen from './ConfiguracionScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -11,48 +12,37 @@ function MainScreen() {
   const navigation = useNavigation();
 
   return (
-    <LinearGradient
-      colors={['white', '#22c1c3']}
-      style={styles.background}
-    >
-      <Image 
-        source={require('./assets/logomuni.png')} 
-        style={styles.imageTop} 
-      />
-
-      <Text style={styles.text}>Municipalidad de Quinchao</Text>
-      <Text style={styles.subtitulo}>Departamento de Medio Ambiente</Text>
-    {/* 
+    <View style={styles.container}>
+      <Text style={styles.text}>Seleccione una opción</Text>
+      
       <View style={styles.buttonContainer}>
-        <Button 
-          title="Presiona aquí" 
-          color="#6200EE" 
-          onPress={() => Alert.alert("Alerta", "Has presionado el botón normal")}
-        />
-      </View>
+        <View style={styles.iconButtonWrapper}>
+          <Pressable 
+            style={({ pressed }) => [
+              styles.iconButton, 
+              { backgroundColor: pressed ? '#e68a00' : '#FFA500' }
+            ]} 
+            onPress={() => navigation.navigate('Home')}
+          >
+            <FontAwesome name="home" size={44} color="white" />
+          </Pressable>
+          <Text style={styles.subtitulo}>Home</Text>
+        </View>
 
-      <TouchableHighlight 
-        style={styles.customButton} 
-        underlayColor="#4CAF50"
-        onPress={() => Alert.alert("Alerta", "Has presionado el botón personalizado")}
-      >
-        <Text style={styles.buttonText}>Presiona Aquí</Text>
-      </TouchableHighlight>
-      */}
-      <Pressable 
-        style={({ pressed }) => [
-          styles.iconButton, 
-          { backgroundColor: pressed ? '#1A73E8' : '#4285F4' }
-        ]} 
-        onPress={() => navigation.navigate('Home')}
-      >
-        <Image 
-          source={require('./assets/google.png')}
-          style={styles.icon}
-        />
-        <Text style={styles.buttonText}>Iniciar sesión</Text>
-      </Pressable>
-    </LinearGradient>
+        <View style={styles.iconButtonWrapper}>
+          <Pressable 
+            style={({ pressed }) => [
+              styles.iconButton, 
+              { backgroundColor: pressed ? '#007bbb' : '#00BFFF' }
+            ]} 
+            onPress={() => navigation.navigate('Configuracion')}
+          >
+            <FontAwesome name="cog" size={44} color="white" />
+          </Pressable>
+          <Text style={styles.subtitulo}>Settings</Text>
+        </View>
+      </View>
+    </View>
   );
 }
 
@@ -62,50 +52,45 @@ export default function App() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Main" component={MainScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Configuracion" component={ConfiguracionScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  background: {
+  container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
   },
-  imageTop: {
-    width: 170,
-    height: 170,
-    resizeMode: 'contain',
-    marginBottom: 20,
-  },
   text: {
-    fontSize: 20,
+    fontSize: 30,
     fontWeight: '600',
     color: 'black',
-    marginBottom: 5,
+    marginBottom: 20,
   },
-  subtitulo: {
-    fontSize: 16,
-    color: 'black',
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '100%',
+    marginTop: 10,
+  },
+  iconButtonWrapper: {
+    alignItems: 'center', 
   },
   iconButton: {
-    flexDirection: 'row',
     alignItems: 'center',
-    padding: 12,
-    borderRadius: 8,
-    marginVertical: 10,
+    justifyContent: 'center',
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    marginHorizontal: 10,
   },
-  buttonText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 16,
-    paddingHorizontal: 10,
-  },
-  icon: {
-    width: 24,
-    height: 24,
-    marginRight: 8,
+  subtitulo: {
+    fontSize: 13,
+    color: 'black',
+    marginTop: 5,
   },
 });
