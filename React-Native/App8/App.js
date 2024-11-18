@@ -9,7 +9,7 @@ export default function App() {
       style={styles.gradient}
     >
       <View style={styles.container}>
-        {/* Card 1 */}
+
         <View style={styles.card}>
           <Image
             source={{ uri: 'https://www.grazia.fr/wp-content/uploads/grazia/2023/09/ariana_grande.jpg' }}
@@ -21,7 +21,6 @@ export default function App() {
           Ariana Grande-Butera es una cantante, compositora, actriz y empresaria estadounidense. Comenzó su carrera musical en Broadway a los 15 años en el musical 13.          </Text>
         </View>
 
-        {/* Card 2 */}
         <View style={styles.card}>
           <Image
             source={{ uri: 'https://www.classic-music-vault.com/wp-content/uploads/2017/10/maxresdefault-36.jpg' }}
