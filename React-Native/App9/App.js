@@ -23,7 +23,7 @@ const App = () => {
         <Card.Content>
           <Text style={styles.name}>J Balvin</Text>
           <Text style={styles.description}>
-          José Álvaro Osorio Balvin, más conocido por su nombre artístico J Balvin, es un cantante, rapero y productor colombiano, reconocido como uno de los artistas latinos más exitosos del mundo          </Text>
+          José Osorio Balvin, más conocido por su nombre artístico J Balvin, es un cantante, rapero y productor colombiano, reconocido como uno de los artistas latinos más exitosos del mundo          </Text>
         </Card.Content>
         <Card.Cover
           source={{ uri: 'https://industriamusical.com/wp-content/uploads/2022/09/J-Balvin.jpg' }}
